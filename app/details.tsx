@@ -28,12 +28,12 @@ export default function Home() {
             <FlatList
                 data= {personagens}
                 keyExtractor={item => {item.id.toString()}}
-                renderItem={({item}) => {
+                renderItem={({item}) => (
                 <View style={style.card}>
                     <Image source= {{uri: item.images[0]}} style={style.image}/>
                     <Text style={style.name}>{item.name}</Text>
                 </View>
-                }}
+                )}
             />
         </View>
     )
