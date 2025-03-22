@@ -15,7 +15,8 @@ export default function HomeScreen() {
             <Text>Bem-vindo ao meu APP</Text>
             <Text>Contador: {count}</Text>
             <Button title="Aumentar" onPress={() => setCount(count + 1)}/>
-            <Button title="Ir para Home" onPress={() => router.push('/home')}/>
+            <Button title="Diminuir" onPress={() => setCount(count - 1)}/>  
+            <Button title="Ir para Home" onPress={() => router.push('/characters')}/>
             </View>
     )
 }

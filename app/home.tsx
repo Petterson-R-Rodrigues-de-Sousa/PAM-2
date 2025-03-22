@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
-import { Button, Text } from "react-native";
-import { View } from "react-native-reanimated/lib/typescript/Animated";
+import { Button, Text, View } from "react-native";
 
 export default function Home() {
     const router = useRouter();

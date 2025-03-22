@@ -4,34 +4,39 @@ import { coolDownAsync } from "expo-web-browser";
 import { useEffect, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 
-interface Personagem {
+interface characters {
     id: number;
     name: string;
-    images: [string]
+    images: [string];
+    
+    family: []
+        father: number},
 }
 
 export default function Home() {
     const router = useRouter ();
-    const [personagens, setPersonagens] = useState<Personagem[]>([])
+    const [characters, setCharacters] = useState<characters[]>([])
     const [carregar, setCarrergar] = useState (true)
 
     useEffect(() => {
         async function carregarPersonagens() {
             const dados = await fetchCharacters();
-            setPersonagens(dados.characters);
+            setCharacters(dados.characters);
         }
+            carregarPersonagens()
     }, [])
 
     return (
-        <View style ={style.container}>
+        <View   style ={style.container}>
             <Text>Página de detalhes</Text>
             <FlatList
-                data= {personagens}
-                keyExtractor={item => {item.id.toString()}}
+                data= {characters}
+                keyExtractor={item => item.id.toString()}
                 renderItem={({item}) => (
                 <View style={style.card}>
                     <Image source= {{uri: item.images[0]}} style={style.image}/>
-                    <Text style={style.name}>{item.name}</Text>
+                    <Text style={style.name}>{item.name}.</Text>
+                    <Text style={style.family}>{item.family}</Text>
                 </View>
                 )}
             />
@@ -63,6 +68,13 @@ const style= StyleSheet.create({
     name: {
         fontSize: 18, 
         fontWeight: "bold"
+    },
+
+    family: {
+        
+        fontSize: 18, 
+        fontWeight: "bold"
+
     }
 
 })
